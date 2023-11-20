@@ -1,0 +1,29 @@
+
+<h1>Leave Requests</h1>
+<td><%= link_to 'Apply leave', new_leave_request_path %></td>
+<table>
+  <thead>
+    <tr>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Status</th>
+      <th>Leavetype</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leave_requests.each do |leave_request| %>
+      <tr>
+        <td><%= leave_request.start_date %></td>
+        <td><%= leave_request.end_date %></td>
+       <td><%= leave_request.status == true ? "Accepted" : "Pending" %></td>
+        <td><%= leave_request.leavetype.leave_type %></td>
+        <td><%= link_to 'Show', leave_request %></td>
+        <td><%= link_to 'Edit', edit_leave_request_path(leave_request) %></td>
+        <td><%= link_to 'Destroy', leave_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
